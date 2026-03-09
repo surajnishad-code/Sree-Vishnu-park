@@ -1,0 +1,1954 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <title>Sri Vishnu Park - Restaurant in Bengaluru</title>
+  <meta name="description" content="Sri Vishnu Park in Bengaluru — Pure vegetarian restaurant serving fresh, flavorful meals with quality ingredients. Dine-in, family-friendly ambience, and quick service in Shanti Nagar." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sri Vishnu Park - Restaurant in Bengaluru" />
+  <meta property="og:description" content="Pure vegetarian restaurant in Shanti Nagar, Bengaluru. Fresh ingredients, authentic flavors, and a warm family-friendly dining experience." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1400&q=80" />
+  <meta property="og:url" content="" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sri Vishnu Park - Restaurant in Bengaluru" />
+  <meta name="twitter:description" content="Pure vegetarian restaurant in Shanti Nagar, Bengaluru. Fresh ingredients, authentic flavors, and a warm family-friendly dining experience." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1400&q=80" />
+
+  <!-- Fonts (CDN allowed) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      /* Brand requirement: Green + Black + White */
+      --bg: #0b0b0f;
+      --bg2:#0f1016;
+      --card:#12131b;
+      --text:#f7f7fb;
+      --muted: rgba(247,247,251,.72);
+      --muted2: rgba(247,247,251,.54);
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 20px 70px rgba(0,0,0,.55);
+
+      /* Primary accent (green) */
+      --red:#005F02;
+      --red2:#427A43;
+      --white:#ffffff;
+      --black:#000000;
+
+      /* Hero palette requested (used as accent in hero/badges/pattern) */
+      --g1:#005F02;
+      --g2:#427A43;
+      --g3:#C0B87A;
+      --g4:#F2E3BB;
+
+      --radius: 18px;
+      --radius2: 26px;
+      --container: 1160px;
+
+      --font-sans: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --font-serif: "Playfair Display", Georgia, serif;
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(900px 450px at 10% -10%, rgba(0,95,2,.22), transparent 60%),
+        radial-gradient(900px 450px at 110% 10%, rgba(66,122,67,.18), transparent 60%),
+        radial-gradient(700px 350px at 30% 110%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    button{ font-family:inherit; }
+    .container{
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Loading Screen */
+    .loader{
+      position:fixed;
+      inset:0;
+      background: radial-gradient(900px 450px at 50% 20%, rgba(0,95,2,.20), transparent 55%),
+                  linear-gradient(180deg, #07070a, #0a0a10);
+      z-index:9999;
+      display:grid;
+      place-items:center;
+      transition: opacity .45s var(--ease), visibility .45s var(--ease);
+    }
+    .loader.hidden{ opacity:0; visibility:hidden; }
+    .loader-card{
+      width:min(520px, calc(100% - 44px));
+      padding: 26px 22px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 22px;
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 20px 80px rgba(0,0,0,.65);
+      position:relative;
+      overflow:hidden;
+    }
+    .loader-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(120deg, transparent 25%, rgba(0,95,2,.48), transparent 70%);
+      transform: translateX(-65%);
+      animation: shimmer 1.4s var(--ease) infinite;
+      filter: blur(2px);
+      opacity:.9;
+    }
+    @keyframes shimmer{
+      0%{ transform: translateX(-70%); }
+      100%{ transform: translateX(70%); }
+    }
+    .loader-inner{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .loader-mark{
+      width:44px;height:44px;border-radius:14px;
+      background: linear-gradient(135deg, var(--red), var(--red2));
+      box-shadow: 0 14px 40px rgba(0,95,2,.35);
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,255,255,.16);
+    }
+    .loader-mark svg{ width:22px;height:22px; }
+    .loader-title{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      line-height: 1.1;
+    }
+    .loader-title strong{
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .loader-title span{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .loader-dots{
+      margin-left:auto;
+      display:flex;
+      gap: 6px;
+      align-items:center;
+      padding-right: 4px;
+      position:relative;
+      z-index:2;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: rgba(255,255,255,.28);
+      animation: bounce 1.1s var(--ease) infinite;
+    }
+    .dot:nth-child(2){ animation-delay:.12s; }
+    .dot:nth-child(3){ animation-delay:.24s; }
+    @keyframes bounce{
+      0%,100%{ transform: translateY(0); opacity:.55; }
+      50%{ transform: translateY(-6px); opacity:1; background: rgba(255,255,255,.7); }
+    }
+
+    /* Header / Nav */
+    .header{
+      position: sticky;
+      top:0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(11,11,15,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      height: 74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 220px;
+    }
+    .brand-badge{
+      width:40px;height:40px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(0,95,2,.95), rgba(66,122,67,.88));
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 16px 50px rgba(0,95,2,.25);
+    }
+    .brand-badge svg{ width:20px;height:20px; }
+    .brand-name{
+      display:flex;
+      flex-direction:column;
+      line-height: 1.05;
+    }
+    .brand-name strong{
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .brand-name span{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-links{
+      display:flex;
+      gap: 18px;
+      align-items:center;
+    }
+    .nav-links a{
+      font-size: 14px;
+      color: var(--muted);
+      padding: 10px 10px;
+      border-radius: 12px;
+      transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+      position:relative;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      min-width: 220px;
+      justify-content:flex-end;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius: 14px;
+      padding: 12px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: .1px;
+      cursor:pointer;
+      transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.085);
+      border-color: rgba(255,255,255,.16);
+    }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+    .btn-primary{
+      border-color: rgba(0,95,2,.35);
+      background: linear-gradient(135deg, rgba(0,95,2,.95), rgba(66,122,67,.88));
+      box-shadow: 0 18px 55px rgba(0,95,2,.22);
+    }
+    .btn-primary:hover{
+      box-shadow: 0 22px 70px rgba(0,95,2,.28);
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn-ghost{
+      background: rgba(255,255,255,.04);
+    }
+    .btn svg{ width:16px;height:16px; opacity:.95; }
+
+    .hamburger{
+      display:none;
+      width:44px;height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      cursor:pointer;
+      place-items:center;
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+    .hamburger:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    .hamburger svg{ width:18px;height:18px; }
+
+    /* Mobile menu */
+    .mobile-drawer{
+      position:fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 150;
+      display:none;
+      padding: 18px;
+    }
+    .mobile-drawer.open{ display:block; }
+    .drawer-panel{
+      max-width: 520px;
+      margin: 0 auto;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      background: rgba(10,10,14,.88);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 40px 120px rgba(0,0,0,.7);
+      overflow:hidden;
+    }
+    .drawer-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 14px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .drawer-links{
+      display:flex;
+      flex-direction:column;
+      padding: 10px;
+      gap: 6px;
+    }
+    .drawer-links a{
+      padding: 12px 12px;
+      border-radius: 14px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      background: transparent;
+      transition: background .22s var(--ease), color .22s var(--ease), border-color .22s var(--ease);
+      font-weight: 700;
+    }
+    .drawer-links a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+    }
+    .drawer-cta{
+      padding: 10px 10px 14px;
+      display:grid;
+      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Sections */
+    section{ padding: 96px 0; }
+    main, section{ scroll-margin-top: 90px; }
+    main, section{ position: relative; margin: 0; }
+
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: clamp(24px, 2.4vw, 36px);
+      letter-spacing:-.3px;
+    }
+    .section-title p{
+      margin:0;
+      max-width: 56ch;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 72px 0 110px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset: -2px;
+      background:
+        radial-gradient(900px 480px at 20% 10%, rgba(0,95,2,.35), transparent 55%),
+        radial-gradient(820px 420px at 70% 20%, rgba(66,122,67,.24), transparent 55%),
+        radial-gradient(740px 420px at 80% 90%, rgba(192,184,122,.18), transparent 55%),
+        radial-gradient(680px 380px at 10% 90%, rgba(242,227,187,.12), transparent 55%),
+        radial-gradient(900px 520px at 0% 0%, rgba(0,95,2,.16), transparent 55%);
+      opacity: .95;
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
+      align-items:center;
+      position:relative;
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+      width: fit-content;
+    }
+    .eyebrow .dot-green{
+      width: 8px;height:8px;border-radius:999px;
+      background: linear-gradient(135deg, var(--g1), var(--g2));
+      box-shadow: 0 0 0 4px rgba(0,95,2,.20);
+    }
+    .hero h1{
+      font-family: var(--font-serif);
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 4.3vw, 56px);
+      letter-spacing: -0.7px;
+      line-height: 1.03;
+    }
+    .hero .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 60ch;
+    }
+    .hero-cta{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .badge-row{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .mini-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.045);
+      color: rgba(247,247,251,.78);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .2px;
+    }
+    .mini-badge .leaf{
+      width: 22px;height:22px;border-radius: 10px;
+      display:grid; place-items:center;
+      background: rgba(0,95,2,.20);
+      border: 1px solid rgba(0,95,2,.35);
+    }
+    .mini-badge .leaf svg{ width:14px;height:14px; color: #cfffce; }
+
+    .hero-media{
+      position:relative;
+    }
+    .media-card{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+    .media-card img{
+      width:100%;
+      height: 520px;
+      object-fit: cover;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.03);
+    }
+    .media-overlay{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(800px 400px at 20% 20%, rgba(0,95,2,.35), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.60));
+      pointer-events:none;
+    }
+    .media-float{
+      position:absolute;
+      left:-18px;
+      bottom: 18px;
+      background: rgba(10,10,14,.72);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      padding: 12px 12px;
+      border-radius: 18px;
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6);
+      max-width: 320px;
+      animation: floaty 4.6s var(--ease) infinite;
+    }
+    @keyframes floaty{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
+    }
+    .media-float .icon{
+      width:44px;height:44px;border-radius:16px;
+      display:grid;place-items:center;
+      background: rgba(0,95,2,.16);
+      border:1px solid rgba(0,95,2,.35);
+    }
+    .media-float .icon svg{ width:18px;height:18px; }
+    .media-float strong{ display:block; font-weight: 900; letter-spacing:.1px; }
+    .media-float span{ display:block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* About */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.035);
+      border-radius: var(--radius2);
+      padding: 22px;
+      box-shadow: 0 18px 70px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(560px 240px at 20% 10%, rgba(0,95,2,.16), transparent 60%),
+        radial-gradient(520px 240px at 85% 20%, rgba(255,255,255,.06), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .panel > *{ position:relative; }
+    .about-copy h3{
+      margin:0 0 10px;
+      font-size: 20px;
+      letter-spacing:-.2px;
+    }
+    .about-copy p{
+      margin:0 0 14px;
+      color: var(--muted);
+      line-height:1.75;
+      font-size: 14px;
+    }
+    .feature-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .feature{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 14px 14px;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+    .feature:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.05);
+    }
+    .feature .ficon{
+      width:40px;height:40px;border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(0,95,2,.14);
+      border:1px solid rgba(0,95,2,.28);
+      flex: 0 0 auto;
+    }
+    .feature .ficon svg{ width:18px;height:18px; }
+    .feature strong{ display:block; font-weight: 900; font-size: 13px; }
+    .feature span{ display:block; font-size: 12px; color: var(--muted); margin-top: 4px; line-height:1.5; }
+
+    .about-stats{
+      display:grid;
+      gap: 12px;
+      align-content:start;
+    }
+    .stat{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap: 12px;
+    }
+    .stat .big{
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -.5px;
+    }
+    .stat .label{
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing:.25px;
+      text-transform:uppercase;
+    }
+    .stat .hint{
+      color: var(--muted2);
+      font-size: 12px;
+      line-height:1.5;
+      margin-top: 6px;
+    }
+
+    /* Gallery */
+    .gallery{
+      padding-top: 72px;
+    }
+    .gallery-grid{
+      column-count: 3;
+      column-gap: 14px;
+    }
+    .g-item{
+      break-inside: avoid;
+      margin: 0 0 14px;
+      position:relative;
+      border-radius: 20px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      cursor:pointer;
+      transform: translateZ(0);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    }
+    .g-item:hover{
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 24px 80px rgba(0,0,0,.55);
+    }
+    .g-item img{
+      width:100%;
+      height:auto;
+      display:block;
+      filter: saturate(1.08) contrast(1.04);
+    }
+    .g-item .cap{
+      position:absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      color: rgba(255,255,255,.92);
+    }
+    .cap strong{ font-size: 13px; letter-spacing:.1px; }
+    .cap span{ font-size: 12px; color: rgba(255,255,255,.7); }
+    .cap svg{ width:16px;height:16px; opacity:.9; }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.72);
+      z-index: 300;
+      display:none;
+      padding: 18px;
+      align-items:center;
+      justify-content:center;
+    }
+    .lightbox.open{ display:flex; }
+    .lightbox-panel{
+      width:min(1080px, 100%);
+      border-radius: 24px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,10,14,.82);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 45px 140px rgba(0,0,0,.8);
+      position:relative;
+    }
+    .lightbox-panel img{
+      width:100%;
+      height: min(70vh, 680px);
+      object-fit: cover;
+      display:block;
+    }
+    .lightbox-bar{
+      padding: 12px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .lightbox-bar .meta{
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+      padding-left: 4px;
+    }
+    .lightbox-bar strong{ font-size: 14px; }
+    .lightbox-bar span{ font-size: 12px; color: var(--muted); }
+    .icon-btn{
+      width:44px;height:44px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+    .icon-btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.085); }
+    .icon-btn svg{ width:18px;height:18px; }
+
+    /* Testimonials */
+    .testimonials-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .review{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.035);
+      border-radius: var(--radius2);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+      transition: transform .25s var(--ease), background .25s var(--ease);
+      min-height: 220px;
+    }
+    .review:hover{
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.05);
+    }
+    .stars{
+      display:flex;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+    .stars svg{ width:16px;height:16px; color: #ffd06b; }
+    .review p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.7;
+    }
+    .review-foot{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .avatar{
+      width:42px;height:42px;border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      flex: 0 0 auto;
+      background: rgba(255,255,255,.06);
+    }
+    .avatar img{ width:100%;height:100%; object-fit: cover; }
+    .review-foot strong{ display:block; font-size: 13px; letter-spacing:.1px; }
+    .review-foot span{ display:block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      align-items:start;
+    }
+    form{
+      display:grid;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .field-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    label{
+      display:block;
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(247,247,251,.75);
+      margin-bottom: 6px;
+      letter-spacing:.2px;
+      text-transform: uppercase;
+    }
+    input, textarea{
+      width:100%;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 12px 12px;
+      color: var(--text);
+      outline:none;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+      font-size: 14px;
+    }
+    input:focus, textarea:focus{
+      border-color: rgba(0,95,2,.45);
+      background: rgba(255,255,255,.06);
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+
+    .contact-card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius2);
+      padding: 18px;
+      overflow:hidden;
+    }
+    .contact-list{
+      display:grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .citem{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .cicon{
+      width:40px;height:40px;border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(0,95,2,.13);
+      border:1px solid rgba(0,95,2,.25);
+      flex:0 0 auto;
+    }
+    .cicon svg{ width:18px;height:18px; }
+    .citem strong{ display:block; font-size: 13px; }
+    .citem span, .citem a{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height:1.5;
+    }
+    .map{
+      margin-top: 12px;
+      border-radius: 20px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      height: 260px;
+    }
+    .map iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      filter: grayscale(.15) contrast(1.05) saturate(1.05);
+    }
+
+    /* Footer */
+    footer{
+      padding: 44px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.15);
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.4fr .8fr .8fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .footer-grid h4{
+      margin:0 0 10px;
+      font-size: 14px;
+      letter-spacing:.1px;
+    }
+    .footer-grid p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.7;
+      font-size: 13px;
+    }
+    .links{
+      display:grid;
+      gap: 8px;
+    }
+    .links a{
+      color: var(--muted);
+      font-size: 13px;
+      padding: 6px 0;
+      width: fit-content;
+      transition: color .2s var(--ease), transform .2s var(--ease);
+    }
+    .links a:hover{
+      color: var(--text);
+      transform: translateX(2px);
+    }
+    .social{
+      display:flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .social a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:44px;height:44px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      transition: transform .25s var(--ease), background .25s var(--ease);
+    }
+    .social a:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.085);
+    }
+    .social svg{ width:18px;height:18px; }
+    .copyright{
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 16px;
+    }
+
+    /* Floating WhatsApp + Back to top */
+    .float-wrap{
+      position:fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 250;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      align-items:flex-end;
+    }
+    .fab{
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition: transform .25s var(--ease), background .25s var(--ease), opacity .25s var(--ease);
+    }
+    .fab:hover{ transform: translateY(-3px); background: rgba(255,255,255,.085); }
+    .fab svg{ width:22px;height:22px; }
+    .fab-wa{
+      background: linear-gradient(135deg, #1fbf5b, #0ea94a);
+      border-color: rgba(255,255,255,.18);
+    }
+    .fab-wa:hover{ background: linear-gradient(135deg, #22cc62, #11b652); }
+    .fab-top{
+      opacity:0;
+      transform: translateY(8px);
+      pointer-events:none;
+    }
+    .fab-top.show{
+      opacity:1;
+      transform: translateY(0);
+      pointer-events:auto;
+    }
+
+    /* Reveal animations */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .reveal.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.delay-1{ transition-delay: .08s; }
+    .reveal.delay-2{ transition-delay: .16s; }
+    .reveal.delay-3{ transition-delay: .24s; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .media-card img{ height: 420px; }
+      .media-float{ left: 12px; right: 12px; max-width: unset; }
+      .about-grid{ grid-template-columns: 1fr; }
+      .testimonials-grid{ grid-template-columns: repeat(2, 1fr); }
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px){
+      .nav-links{ display:none; }
+      .nav-cta{ display:none; }
+      .hamburger{ display:grid; }
+    }
+    @media (max-width: 740px){
+      section{ padding: 72px 0; }
+      .gallery-grid{ column-count: 2; }
+      .field-row{ grid-template-columns: 1fr; }
+      .footer-grid{ grid-template-columns: 1fr; }
+      .testimonials-grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 420px){
+      .gallery-grid{ column-count: 1; }
+      .media-card img{ height: 360px; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal{ opacity:1 !important; transform:none !important; }
+      .loader{ display:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-label="Loading">
+    <div class="loader-card" role="status" aria-live="polite">
+      <div class="loader-inner">
+        <div class="loader-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 10.5c2.2-2.9 4.9-4.3 8-4 1.4.1 2.6.6 3.5 1.4.8.7.7 1.9-.3 2.3-1.6.7-3.1 1.6-4.2 2.9-1.3 1.5-2 3.2-2.1 5.1 0 .9-.8 1.6-1.7 1.5-1.8-.2-3.4-1-4.4-2.4-1.6-2.1-1.4-5.2 1.2-6.8Z" fill="rgba(255,255,255,.95)"/>
+          </svg>
+        </div>
+        <div class="loader-title">
+          <strong>Sri Vishnu Park</strong>
+          <span>Preparing a fresh experience…</span>
+        </div>
+        <div class="loader-dots" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#home" aria-label="Sri Vishnu Park Home">
+          <div class="brand-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3c2.2 2.8 3.3 5.3 3.3 7.6A6.3 6.3 0 1 1 7 10.6C7 8.3 9 5.8 12 3Z" fill="rgba(255,255,255,.95)"/>
+            </svg>
+          </div>
+          <div class="brand-name">
+            <strong>Sri Vishnu Park</strong>
+            <span>Pure Veg Restaurant • Bengaluru</span>
+          </div>
+        </a>
+
+        <div class="nav-links" role="navigation" aria-label="Site">
+          <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a class="btn btn-ghost" href="#gallery">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            View Menu
+          </a>
+          <a class="btn btn-primary" href="#contact">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 7h13M8 12h13M8 17h13M3 7h.01M3 12h.01M3 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Reserve / Order
+          </a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+      <div class="drawer-top">
+        <div class="brand" style="min-width:auto;">
+          <div class="brand-badge" aria-hidden="true" style="width:36px;height:36px;border-radius:14px;">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3c2.2 2.8 3.3 5.3 3.3 7.6A6.3 6.3 0 1 1 7 10.6C7 8.3 9 5.8 12 3Z" fill="rgba(255,255,255,.95)"/>
+            </svg>
+          </div>
+          <div class="brand-name">
+            <strong>Sri Vishnu Park</strong>
+            <span>Pure Veg • Bengaluru</span>
+          </div>
+        </div>
+        <button class="icon-btn" id="drawerClose" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="drawer-links">
+        <a href="#home" data-close-drawer>Home</a>
+        <a href="#about" data-close-drawer>About</a>
+        <a href="#gallery" data-close-drawer>Gallery</a>
+        <a href="#testimonials" data-close-drawer>Testimonials</a>
+        <a href="#contact" data-close-drawer>Contact</a>
+      </div>
+      <div class="drawer-cta">
+        <a class="btn btn-ghost" href="#gallery" data-close-drawer>View Menu</a>
+        <a class="btn btn-primary" href="#contact" data-close-drawer>Reserve / Order</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow reveal">
+            <span class="dot-green" aria-hidden="true"></span>
+            Fresh, modern & 100% vegetarian
+          </div>
+
+          <h1 class="reveal delay-1">Pure Veg. Pure Delight.</h1>
+
+          <p class="sub reveal delay-2">
+            At <strong>Sri Vishnu Park</strong>, we serve vibrant vegetarian dishes crafted with fresh ingredients and authentic flavors—
+            perfect for families, health-conscious diners, and busy professionals in Bengaluru.
+          </p>
+
+          <div class="hero-cta reveal delay-3">
+            <a class="btn btn-ghost" href="#gallery">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              View Menu
+            </a>
+            <a class="btn btn-primary" href="#contact">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M21 8l-9 6-9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 8v10h18V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Reserve a Table / Order Now
+            </a>
+          </div>
+
+          <div class="badge-row reveal delay-3" aria-label="Highlights">
+            <span class="mini-badge">
+              <span class="leaf" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 4c-6 1-10 4-12 9-1 2-2 3-4 4 3 1 6 0 8-2 5-2 8-6 9-11Z" fill="currentColor"/>
+                </svg>
+              </span>
+              100% Vegetarian
+            </span>
+            <span class="mini-badge">
+              <span class="leaf" aria-hidden="true" style="background:rgba(66,122,67,.20);border-color:rgba(66,122,67,.35);">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3c2 3 3 6 3 8a3 3 0 1 1-6 0c0-2 1-5 3-8Z" fill="currentColor"/>
+                </svg>
+              </span>
+              Fresh Ingredients
+            </span>
+            <span class="mini-badge">
+              <span class="leaf" aria-hidden="true" style="background:rgba(192,184,122,.18);border-color:rgba(192,184,122,.35);">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12c2-5 6-8 8-8s6 3 8 8c-2 5-6 8-8 8s-6-3-8-8Z" fill="currentColor"/>
+                </svg>
+              </span>
+              Farm to Table
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-media reveal delay-2">
+          <div class="media-card" aria-label="Colorful vegetarian dishes">
+            <img
+              src="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_30,w_750/f_auto/south-indian-food-phplHtYCF"
+              alt="A colorful vegetarian bowl with fresh ingredients"
+              loading="eager"
+            />
+            <div class="media-overlay" aria-hidden="true"></div>
+          </div>
+
+          <div class="media-float" aria-label="Quick info">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 8v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Fast, friendly service</strong>
+              <span>Great for quick lunches & relaxed family dinners</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>About Sri Vishnu Park</h2>
+          <p>
+            A pure vegetarian restaurant in Shanti Nagar, Bengaluru—where freshness meets authentic taste in a clean, modern space.
+          </p>
+        </div>
+        <div style="color:var(--muted);font-weight:800;font-size:12px;letter-spacing:.25px;text-transform:uppercase;">
+          Tagline: <span style="color:var(--text);">Fresh Veg. Authentic Flavours. Happy Families.</span>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="panel about-copy reveal delay-1">
+          <h3>Why you’ll love dining with us</h3>
+          <p>
+            We focus on <strong>pure vegetarian</strong> food made with quality ingredients, balanced spices, and consistent taste.
+            Whether you’re here for a wholesome meal or a quick bite, we keep it simple: clean flavors, warm hospitality, and dependable service.
+          </p>
+          <p>
+            Conveniently located at <strong>29,2, Kengal Hanumantaiah Rd, Shanti Nagar, Bengaluru, Karnataka 560027</strong>.
+          </p>
+
+          <div class="feature-grid" aria-label="Key features">
+            <div class="feature">
+              <div class="ficon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6.6-7 11-7 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Pure Veg Promise</strong>
+                <span>Vegetarian-only kitchen for peace of mind.</span>
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="ficon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 7h16M7 7v10a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Fresh Ingredients</strong>
+                <span>Prepared daily for better taste and texture.</span>
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="ficon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M7 8l-4 4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 8l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Quick Service</strong>
+                <span>Ideal for office lunches and busy days.</span>
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="ficon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l4 8 8 1-6 6 1 9-7-4-7 4 1-9-6-6 8-1 4-8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Family-Friendly</strong>
+                <span>Comfortable ambiance for all ages.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-stats reveal delay-2" aria-label="Restaurant highlights">
+          <div class="stat">
+            <div>
+              <div class="big">10+</div>
+              <div class="label">Signature Veg Specials</div>
+              <div class="hint">From hearty mains to refreshing beverages.</div>
+            </div>
+            <div style="color:rgba(0,95,2,.95);font-weight:900;">★ ★ ★ ★ ★</div>
+          </div>
+
+          <div class="stat">
+            <div>
+              <div class="big">100%</div>
+              <div class="label">Vegetarian</div>
+              <div class="hint">A menu designed for fresh, plant-forward dining.</div>
+            </div>
+            <div style="color:rgba(255,255,255,.9);font-weight:900;">PURE</div>
+          </div>
+
+          <div class="stat">
+            <div>
+              <div class="big">Shanti Nagar</div>
+              <div class="label">Bengaluru</div>
+              <div class="hint">Easy access near central Bengaluru.</div>
+            </div>
+            <div style="color:rgba(242,227,187,.9);font-weight:900;">📍</div>
+          </div>
+
+          <div class="panel" style="padding:18px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+              <div>
+                <div style="font-weight:900; letter-spacing:.1px;">Call us for quick orders</div>
+                <div style="color:var(--muted); font-size:13px; margin-top:4px;">Phone: <a href="tel:+919481528812" style="color:var(--text);font-weight:900;">094815 28812</a></div>
+              </div>
+              <a class="btn btn-primary" href="https://wa.me/919481528812" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 11.6A7.6 7.6 0 0 1 12.4 19a7.4 7.4 0 0 1-3.8-1l-3.6 1 1.2-3.4a7.4 7.4 0 0 1-1.2-4.1A7.6 7.6 0 0 1 12.4 4a7.6 7.6 0 0 1 7.6 7.6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>Vegetarian Gallery</h2>
+          <p>
+            A quick look at fresh, colorful, vegetarian favorites—crafted to be wholesome, vibrant, and satisfying.
+          </p>
+        </div>
+        <div style="color:var(--muted);font-weight:800;font-size:12px;letter-spacing:.25px;text-transform:uppercase;">
+          Tap to open lightbox
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid" aria-label="Photo gallery">
+        <!-- 8 veg-only images (Unsplash direct URLs) -->
+        <figure class="g-item reveal delay-1" data-title="Fresh Veg Bowl" data-subtitle="Healthy, vibrant & hearty" data-full="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80" alt="Fresh vegetarian bowl" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>Fresh Veg Bowl</strong><span>Healthy & hearty</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item reveal delay-2" data-title="Paneer Delight" data-subtitle="Comforting & flavorful" data-full="https://images.unsplash.com/photo-1604908176997-125f25cc500f?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1604908176997-125f25cc500f?auto=format&fit=crop&w=900&q=80" alt="Paneer-based vegetarian dish" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>Paneer Delight</strong><span>Rich & balanced</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item reveal delay-3" data-title="South Indian Tiffin" data-subtitle="Light, crispy & classic" data-full="https://images.unsplash.com/photo-1668236543090-82f90c2c6d67?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1668236543090-82f90c2c6d67?auto=format&fit=crop&w=900&q=80" alt="South Indian vegetarian breakfast platter" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>South Indian Tiffin</strong><span>Crispy & classic</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item reveal delay-1" data-title="Fresh Salad" data-subtitle="Crisp, clean & refreshing" data-full="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=80" alt="Fresh vegetarian salad" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>Fresh Salad</strong><span>Crisp & refreshing</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item reveal delay-2" data-title="Veg Curry & Rice" data-subtitle="Warm & satisfying" data-full="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80" alt="Vegetarian curry served with rice" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>Veg Curry & Rice</strong><span>Warm & satisfying</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item reveal delay-3" data-title="Smoothie & Fruit" data-subtitle="Naturally energizing" data-full="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=900&q=80" alt="Fresh fruit smoothie" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>Smoothie & Fruit</strong><span>Fresh & energizing</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item reveal delay-1" data-title="Veg Wrap" data-subtitle="Perfect for quick bites" data-full="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80" alt="Vegetarian wrap with fresh vegetables" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>Veg Wrap</strong><span>Quick & tasty</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item reveal delay-2" data-title="Dessert Treat" data-subtitle="A sweet vegetarian finish" data-full="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1800&q=80">
+          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80" alt="Vegetarian dessert in a glass" loading="lazy"/>
+          <figcaption class="cap">
+            <div><strong>Dessert Treat</strong><span>Sweet finish</span></div>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 5h5v5M10 19H5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 5l-7 7M5 19l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>What customers say</h2>
+          <p>
+            Real experiences from diners who love our vegetarian food, friendly service, and convenient location in Bengaluru.
+          </p>
+        </div>
+      </div>
+
+      <div class="testimonials-grid" aria-label="Customer reviews">
+        <article class="review reveal delay-1">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+          </div>
+          <p>
+            “Clean place and consistently tasty pure veg food. The flavors feel fresh and not too heavy—perfect for lunch.”
+          </p>
+          <div class="review-foot">
+            <div class="avatar"><img alt="Customer photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=70" loading="lazy"></div>
+            <div>
+              <strong>Arjun S.</strong>
+              <span>Local Guide</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="review reveal delay-2">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+          </div>
+          <p>
+            “Loved the fresh ingredients and the quick service. Great option for families—everyone found something they liked.”
+          </p>
+          <div class="review-foot">
+            <div class="avatar"><img alt="Customer photo" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=70" loading="lazy"></div>
+            <div>
+              <strong>Meera K.</strong>
+              <span>Family Diner</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="review reveal delay-3">
+          <div class="stars" aria-label="4 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z" stroke="#ffd06b" stroke-width="2"/></svg>
+          </div>
+          <p>
+            “Simple, hygienic, and tasty. The ambience is calm and modern—nice for a relaxed dinner after work.”
+          </p>
+          <div class="review-foot">
+            <div class="avatar"><img alt="Customer photo" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=70" loading="lazy"></div>
+            <div>
+              <strong>Rohit V.</strong>
+              <span>Regular Customer</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="review reveal delay-1">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .7-5.4 4.6 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7 9 9l3-7Z"/></svg>
+          </div>
+          <p>
+            “Great pure veg option in Shanti Nagar. Quick ordering on WhatsApp is super convenient when you’re in a hurry.”
+          </p>
+          <div class="review-foot">
+            <div class="avatar"><img alt="Customer photo" src="https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=200&q=70" loading="lazy"></div>
+            <div>
+              <strong>Nisha P.</strong>
+              <span>Office Professional</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h2>Contact & Reservations</h2>
+          <p>
+            Visit us in Shanti Nagar, Bengaluru. Send a message for table reservations or quick ordering.
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="panel reveal delay-1">
+          <h3 style="margin:0 0 10px;">Send us a message</h3>
+          <p style="margin:0 0 14px; color:var(--muted); line-height:1.7; font-size:14px;">
+            This form opens your email client (no backend required). For faster response, use WhatsApp.
+          </p>
+
+          <form id="contactForm">
+            <div class="field-row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="Your phone number" required />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div>
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" placeholder="Reservation / Order / Feedback" />
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Write your message…" required></textarea>
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+              <button class="btn btn-primary" type="submit">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M22 2l-7 20-4-9-9-4 20-7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Send Message
+              </button>
+
+              <a class="btn btn-ghost" href="https://wa.me/919481528812" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 11.6A7.6 7.6 0 0 1 12.4 19a7.4 7.4 0 0 1-3.8-1l-3.6 1 1.2-3.4a7.4 7.4 0 0 1-1.2-4.1A7.6 7.6 0 0 1 12.4 4a7.6 7.6 0 0 1 7.6 7.6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                WhatsApp Quick Order
+              </a>
+
+              <div id="formStatus" style="color:var(--muted); font-size:13px;"></div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="contact-card reveal delay-2" aria-label="Business details">
+          <h3 style="margin:0 0 10px;">Business Details</h3>
+          <div class="contact-list">
+            <div class="citem">
+              <div class="cicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 22s7-5 7-12a7 7 0 0 0-14 0c0 7 7 12 7 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 10a2.2 2.2 0 1 0 0 4.4A2.2 2.2 0 0 0 12 10Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Address</strong>
+                <span>29,2, Kengal Hanumantaiah Rd, Shanti Nagar, Bengaluru, Karnataka 560027</span>
+              </div>
+            </div>
+
+            <div class="citem">
+              <div class="cicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10.1a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.7 1.9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+919481528812">094815 28812</a>
+              </div>
+            </div>
+
+            <div class="citem">
+              <div class="cicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M4 8l8 5 8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Email</strong>
+                <span><a href="mailto:srivishnupark@gmail.com">srivishnupark@gmail.com</a> <span style="color:var(--muted2);">(editable)</span></span>
+              </div>
+            </div>
+
+            <div class="citem">
+              <div class="cicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 8v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Business Hours</strong>
+                <span>
+                  Mon–Sun: 7:30 AM – 10:30 PM<br/>
+                  <span style="color:var(--muted2);">Timings can be updated as needed.</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="map" aria-label="Google Map">
+            <iframe
+              title="Sri Vishnu Park location map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=29,2,%20Kengal%20Hanumantaiah%20Rd,%20Shanti%20Nagar,%20Bengaluru,%20Karnataka%20560027&output=embed">
+            </iframe>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="min-width:auto;">
+            <div class="brand-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3c2.2 2.8 3.3 5.3 3.3 7.6A6.3 6.3 0 1 1 7 10.6C7 8.3 9 5.8 12 3Z" fill="rgba(255,255,255,.95)"/>
+              </svg>
+            </div>
+            <div class="brand-name">
+              <strong>Sri Vishnu Park</strong>
+              <span>Pure Veg Restaurant • Bengaluru</span>
+            </div>
+          </div>
+
+          <p style="margin-top:12px;">
+            Fresh vegetarian food, authentic flavors, and a warm dining experience in Shanti Nagar.
+            For quick ordering, message us on WhatsApp.
+          </p>
+
+          <div class="social" aria-label="Social links">
+            <a href="#" aria-label="Facebook (add link)">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v3H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1Z" fill="rgba(255,255,255,.92)"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram (add link)">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="rgba(255,255,255,.92)" stroke-width="2"/>
+                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="rgba(255,255,255,.92)" stroke-width="2"/>
+                <path d="M17.5 6.5h.01" stroke="rgba(255,255,255,.92)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/919481528812" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M20 11.6A7.6 7.6 0 0 1 12.4 19a7.4 7.4 0 0 1-3.8-1l-3.6 1 1.2-3.4a7.4 7.4 0 0 1-1.2-4.1A7.6 7.6 0 0 1 12.4 4a7.6 7.6 0 0 1 7.6 7.6Z" stroke="rgba(255,255,255,.92)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <div class="links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Visit Us</h4>
+          <div class="links">
+            <a href="tel:+919481528812">Call: 094815 28812</a>
+            <a href="https://wa.me/919481528812" target="_blank" rel="noopener">WhatsApp Order</a>
+            <a href="https://www.google.com/maps?q=29,2,%20Kengal%20Hanumantaiah%20Rd,%20Shanti%20Nagar,%20Bengaluru,%20Karnataka%20560027" target="_blank" rel="noopener">Open in Maps</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> Sri Vishnu Park. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <div class="float-wrap" aria-label="Floating actions">
+    <a class="fab fab-wa" href="https://wa.me/919481528812" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20 11.6A7.6 7.6 0 0 1 12.4 19a7.4 7.4 0 0 1-3.8-1l-3.6 1 1.2-3.4a7.4 7.4 0 0 1-1.2-4.1A7.6 7.6 0 0 1 12.4 4a7.6 7.6 0 0 1 7.6 7.6Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <button class="fab fab-top" id="backToTop" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5l7 7-2 2-5-5-5 5-2-2 7-7Z" fill="rgba(255,255,255,.92)"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Image preview">
+      <img id="lightboxImg" alt="Gallery image preview" src="" />
+      <div class="lightbox-bar">
+        <div class="meta">
+          <strong id="lightboxTitle">Title</strong>
+          <span id="lightboxSubtitle">Subtitle</span>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="icon-btn" id="prevImg" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="icon-btn" id="nextImg" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="icon-btn" id="closeLb" aria-label="Close preview">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scrolling (native) + offset-friendly behavior via CSS sticky header already
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    // Loader hide
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => loader.classList.add("hidden"), 450);
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile drawer
+    const hamburger = document.getElementById("hamburger");
+    const drawer = document.getElementById("drawer");
+    const drawerClose = document.getElementById("drawerClose");
+
+    const openDrawer = () => {
+      drawer.classList.add("open");
+      drawer.setAttribute("aria-hidden", "false");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
+    const closeDrawer = () => {
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    };
+
+    hamburger.addEventListener("click", openDrawer);
+    drawerClose.addEventListener("click", closeDrawer);
+    drawer.addEventListener("click", (e) => {
+      if (e.target === drawer) closeDrawer();
+    });
+    document.querySelectorAll("[data-close-drawer]").forEach(a => {
+      a.addEventListener("click", closeDrawer);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        if (drawer.classList.contains("open")) closeDrawer();
+        if (lightbox.classList.contains("open")) closeLightbox();
+      }
+    });
+
+    // Reveal on scroll
+    const revealEls = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => io.observe(el));
+
+    // Back to top
+    const backToTop = document.getElementById("backToTop");
+    const onScroll = () => {
+      if (window.scrollY > 700) backToTop.classList.add("show");
+      else backToTop.classList.remove("show");
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // Contact form -> opens mail client (production-ready without backend)
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim() || "Sri Vishnu Park - Enquiry";
+      const message = document.getElementById("message").value.trim();
+
+      const to = "srivishnupark@gmail.com"; // Change if needed
+      const body =
+`Name: ${name}
+Phone: ${phone}
+Email: ${email}
+
+Message:
+${message}
+
+--- 
+Sent from Sri Vishnu Park website`;
+
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+
+      formStatus.textContent = "Opening your email app… If it doesn’t open, please message us on WhatsApp.";
+      setTimeout(() => formStatus.textContent = "", 6000);
+      contactForm.reset();
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxSubtitle = document.getElementById("lightboxSubtitle");
+    const closeLb = document.getElementById("closeLb");
+    const prevImg = document.getElementById("prevImg");
+    const nextImg = document.getElementById("nextImg");
+
+    const galleryItems = Array.from(document.querySelectorAll(".g-item"));
+    let currentIndex = 0;
+
+    const showLightboxAt = (idx) => {
+      currentIndex = (idx + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[currentIndex];
+      const full = item.getAttribute("data-full");
+      const title = item.getAttribute("data-title") || "Gallery";
+      const subtitle = item.getAttribute("data-subtitle") || "";
+
+      lightboxImg.src = full;
+      lightboxTitle.textContent = title;
+      lightboxSubtitle.textContent = subtitle;
+
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      // release image
+      setTimeout(() => { lightboxImg.src = ""; }, 150);
+    };
+
+    galleryItems.forEach((item, idx) => {
+      item.addEventListener("click", () => showLightboxAt(idx));
+      item.setAttribute("tabindex", "0");
+      item.setAttribute("role", "button");
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") showLightboxAt(idx);
+      });
+    });
+
+    closeLb.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    prevImg.addEventListener("click", () => showLightboxAt(currentIndex - 1));
+    nextImg.addEventListener("click", () => showLightboxAt(currentIndex + 1));
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "ArrowLeft") showLightboxAt(currentIndex - 1);
+      if (e.key === "ArrowRight") showLightboxAt(currentIndex + 1);
+    });
+
+    // Improve active nav feel (simple scroll spy)
+    const navAnchors = Array.from(document.querySelectorAll(".nav-links a"));
+    const sections = ["home","about","gallery","testimonials","contact"]
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        navAnchors.forEach(a => {
+          const match = a.getAttribute("href") === `#${id}`;
+          a.style.color = match ? "var(--text)" : "var(--muted)";
+          a.style.background = match ? "rgba(255,255,255,.06)" : "transparent";
+        });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+
+    sections.forEach(s => spy.observe(s));
+  </script>
+</body>
+</html>
